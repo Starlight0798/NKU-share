@@ -1,0 +1,64 @@
+  {first part}
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+
+  float A[] = {1, 2, 1, 1, 9, 2, 2, 3, 3, 7, 1, 3, 1};
+  int IA[] = {-1, 0, 2, 4, 5, 7, 10};
+  int JA[] = {1, 2, 3, 4, 5, 1, 6, 3, 4, 6, 1, 2, 6};
+
+  float X[6][6] = {{1, 2, 0, 0, 0, 0},
+                   {0, 0, 1, 1, 0, 0},
+                   {0, 0, 0, 0, 9 ,0},
+                   {2, 0, 0, 0, 0, 2},
+                   {0, 0, 3, 3, 0, 7},
+                   {1, 3, 0, 0, 0, 1}};
+
+  float Y[] = {2, 4, 1, 99, 7, 2};
+
+  float Z[6];
+
+  int i, j, k;
+  clock_t start_naive, end_naive;
+  start_naive = clock();
+  int rep = 0;
+  for (rep = 0; rep < 10000000; ++rep) {
+  for (i = 0; i < 6; ++i) {
+      float temp = 0;
+      for (j = 0; j < 6; ++j) {
+        temp += (X[i][j] * Y[j]);
+      }
+      Z[i] = temp;
+  }
+  }
+  end_naive = clock();
+  double time_elapsed_naive = ((double) (end_naive - start_naive)) / CLOCKS_PER_SEC;
+  printf ("%g\n", time_elapsed_naive);
+
+  for (i = 0; i < 6; ++i) printf("%g ", Z[i]);
+  printf("\n");
+3
+{second part}
+  float Z2[6] = {0, 0, 0, 0, 0, 0};
+
+  clock_t start_yale, end_yale;
+  start_yale = clock();
+  for (rep = 0; rep < 10000000; ++rep) {
+  Z2[0] = Z2[1] = Z2[2] = Z2[3] = Z2[4] = Z2[5] = 0;
+  int row = 1;
+  for (i = 0; i < 13; ++i) { // i < number_of_elements_of_A
+    while (row < 6 && i == IA[row+1]) row += 1;
+    Z2[row-1] += (A[i] * Y[JA[i]-1]);
+  }
+  }
+  end_yale = clock();
+  double time_elapsed_yale = ((double) (end_yale - start_yale)) / CLOCKS_PER_SEC;
+  printf ("%g\n", time_elapsed_yale);
+
+  for (i = 0; i < 6; ++i) printf("%g ", Z2[i]);
+  printf("\n");
+
+  return 0;
+}

@@ -1,0 +1,8 @@
+train.txt
+<user id>|<numbers of rating items>
+<item id>   <score>
+test.txt
+<user id>|<numbers of rating items>
+<item id>
+item.txt
+<item id>|<attribute_1>|<attribute_2>('None' means this item is not belong to any of attribute_1/2)

@@ -1,0 +1,8 @@
+/* variable has been used before definition */
+
+int main()
+{
+	a = 0;
+	int a = 1, b = 2;
+	return a + b;
+}

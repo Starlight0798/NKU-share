@@ -1,0 +1,10 @@
+/* function undefinition */
+
+int func(int a, int b, int c)
+{
+	return a + b + c;
+}
+int main()
+{
+	return func(1);
+}

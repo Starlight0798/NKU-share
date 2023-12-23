@@ -1,0 +1,306 @@
+﻿#include "UDPServer.h"
+
+// 构造函数
+UDPServer::UDPServer(UINT port, uint32_t window_size, UINT Delay, double drop) {
+	this->port = port;
+	this->Delay = Delay;
+	this->drop = drop;
+	this->window_size = window_size;
+	recvBuffer.resize(window_size);
+	// 初始化Winsock
+	WSADATA wsaData;
+	int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+	if (result != 0) {
+		Print("WSAStartup failed: " + std::to_string(result), ERR);
+		exit(1);
+	}
+#ifdef Lab3_4
+	std::cout << "ready" << std::endl;
+#endif
+}
+
+// 析构函数
+UDPServer::~UDPServer() {
+	closesocket(serverSocket);
+	WSACleanup();
+}
+
+// 打印接收缓冲区
+void UDPServer::PrintrecvBuffer() {
+	std::string str = "RecvBuffer: ";
+	for (auto& p : recvBuffer) {
+		str += std::to_string(p.getHeader().seqNum) + " ";
+	}
+	Print(str, INFO);
+}
+
+// 开始服务器
+void UDPServer::Start() {
+	serverSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if (serverSocket == INVALID_SOCKET) {
+		Print("Failed to create socket: " + std::to_string(WSAGetLastError()), ERR);
+		WSACleanup();
+		exit(1);
+	}
+
+	serverAddr.sin_family = AF_INET;
+	serverAddr.sin_addr.s_addr = htonl(INADDR_ANY); // 监听任意地址
+	serverAddr.sin_port = htons(static_cast<u_short>(port));
+
+	if (bind(serverSocket, (SOCKADDR*)&serverAddr, sizeof(serverAddr)) == SOCKET_ERROR) {
+		Print("Bind failed with error: " + std::to_string(WSAGetLastError()), ERR);
+		closesocket(serverSocket);
+		WSACleanup();
+		exit(1);
+	}
+
+	Print("Server start at port: " + std::to_string(port), INFO);
+	receiveData();
+}
+
+// 监听并接收数据
+void UDPServer::receiveData() {
+	bool receivingFile = false;
+	ULONGLONG startTime = 0;
+	ULONGLONG endTime = 0;
+
+	while (true) {
+		UDPPacket packet;
+		if (receivePacket(packet)) {
+			const Header& pktHeader = packet.getHeader();
+
+			// 检查是否是文件传输的开始
+			if (packet.isFlagSet(Flag::START)) {
+				openFile("received_file.bin");
+				receivingFile = true;
+				totalBytesRecv = 0;                 // 重置接收的总字节数
+				base = pktHeader.seqNum + 1;	    // 重置窗口基序列号
+				Print("Start receiving file.", INFO);
+				startTime = GetTickCount64(); // 记录开始时间
+				continue;
+			}
+
+			// 如果是数据包，并且已经开始接收文件
+			if (packet.isFlagSet(Flag::DATA) && receivingFile) {
+				// 检查seq范围
+				uint32_t recvSeq = pktHeader.seqNum;
+				// 重复接收到的包
+				if (recvSeq < base) {
+					Print("Received duplicate packet with seq: " +
+						std::to_string(recvSeq) + " Current base: " + std::to_string(base), WARN);
+					sendPacket(Flag::ACK, currSeq++, recvSeq + 1);   // 回复ACK
+					continue;
+				}
+
+				// 超出窗口大小，丢弃该包
+				else if (recvSeq >= base + window_size) {
+					Print("Received packet with seq: " + std::to_string(recvSeq) +
+						" out of window size." + " Current base: " + std::to_string(base), WARN);
+					continue;
+				}
+
+				// 在窗口内，无论是&不是base对应的包，均缓存+回复ACK
+				recvBuffer[recvSeq - base] = packet;				// 缓存该包
+				sendPacket(Flag::ACK, currSeq++, ackNum);			// 回复ACK
+				PrintrecvBuffer();
+
+				// 如果是窗口base对应的包
+				if (recvSeq == base) {
+					// 滑动窗口交付数据包(因为有缓存，可能不止滑一个)
+					while (recvBuffer[0].isFlagSet(Flag::DATA)) {
+						// 交付数据
+						writeData(recvBuffer[0].getData(), recvBuffer[0].getHeader().length);
+						totalBytesRecv += recvBuffer[0].getHeader().length;
+						// 更新窗口基序列号
+						base++;
+						// 从缓存中删除已交付的包
+						recvBuffer.erase(recvBuffer.begin());
+						recvBuffer.push_back(UDPPacket());
+					}
+					continue;
+				}
+			}
+
+			// 检查是否是文件传输的结束
+			if (packet.isFlagSet(Flag::END)) {
+				endTime = GetTickCount64(); // 记录结束时间
+				closeFile();
+				receivingFile = false;
+				double elapsed = static_cast<double>(endTime - startTime) / 1000.0;
+				Print("Bytes Recv: " + std::to_string(totalBytesRecv) + " bytes", INFO);
+				Print("Time Taken: " + std::to_string(elapsed) + " seconds", INFO);
+				Print("Average Speed: " + std::to_string(totalBytesRecv / elapsed) + " bytes/s", INFO);
+#ifdef Lab3_4
+				std::cout << std::to_string(elapsed) << std::endl;
+				std::cout << std::to_string(totalBytesRecv / elapsed) << std::endl;
+				std::cout << "end";
+#endif
+				continue;
+			}
+
+			// 处理握手请求
+			if (packet.isFlagSet(Flag::SYN)) {
+				handshake();
+				continue;
+			}
+
+			// 检查是否是挥手请求（FIN）
+			if (packet.isFlagSet(Flag::FIN)) {
+				waveHand();
+				break;
+			}
+		}
+	}
+}
+
+// 停止服务器并清理资源
+void UDPServer::Stop() {
+	// 执行挥手过程
+	if (isconnect) waveHand();
+	closesocket(serverSocket);
+	WSACleanup();
+	Print("Server stopped.", INFO);
+}
+
+// 写入数据
+void UDPServer::writeData(const char* data, uint16_t length) {
+	if (!outFile.is_open()) {
+		openFile("received_file.bin");  // 指定文件名
+	}
+	// 写入新的数据包
+	outFile.write(data, length);
+}
+
+// 发送Packet
+void UDPServer::sendPacket(uint32_t flags, uint32_t seq, uint32_t ack, const char* data, uint16_t length) {
+	UDPPacket packet;
+	packet.setSeq(seq);		// 使用当前序列号
+	packet.setFlag(flags);
+	if (packet.isFlagSet(Flag::DATA)) {
+		packet.setData(data, length);
+	}
+	if (packet.isFlagSet(Flag::ACK)) {
+		packet.setAck(ack);
+	}
+	packet.setChecksum(packet.calChecksum()); // 计算校验和
+	// 打印发送的数据包信息
+	PrintPacketInfo(packet, SEND);
+	std::string serialized = packet.serialize();
+	sendto(serverSocket, serialized.c_str(), serialized.size(), 0,
+		(struct sockaddr*)&clientAddr, sizeof(clientAddr));
+}
+
+void UDPServer::openFile(const std::string& filename) {
+	outFile.open(filename, std::ios::binary | std::ios::out);
+	if (!outFile.is_open()) {
+		Print("Failed to open file for writing: " + filename, ERR);
+		return;
+	}
+}
+
+void UDPServer::closeFile() {
+	if (outFile.is_open()) {
+		outFile.close();
+		Print("File received and saved.", INFO);
+	}
+}
+
+void UDPServer::handshake() {
+	// 发送握手响应（SYN-ACK）
+	sendPacket(Flag::SYN | Flag::ACK, currSeq++, ackNum);
+
+	// 等待确认（ACK）
+	if (waitForPacket(Flag::ACK)) {
+		isconnect = true;
+		Print("Handshake successful.", INFO);
+	}
+	else {
+		Print("Handshake failed.", ERR);
+	}
+}
+
+void UDPServer::waveHand() {
+	// 第一步：发送ACK响应客户端的FIN
+	sendPacket(Flag::ACK, currSeq++, ackNum);
+	// 第二步：等待一段时间
+	Sleep(50);
+	// 第三步：发送FIN-ACK包
+	sendPacket(Flag::FIN | Flag::ACK, currSeq++, ackNum);
+	// 第四步：等待客户端的ACK
+	if (waitForPacket(Flag::ACK)) {
+		isconnect = false;
+		ackNum = 0;
+		currSeq = 0;
+		base = 0;
+		Print("Wavehand successful.", INFO);
+	}
+	else {
+		Print("No ACK received for FIN.", WARN);
+	}
+}
+
+// 等待指定的包
+bool UDPServer::waitForPacket(uint32_t expectedFlag) {
+	UDPPacket packet;
+	for (int attempts = 0; attempts < MAX_ATTEMPTS; ++attempts) {
+		if (receivePacket(packet)) {
+			if (packet.isFlagSet(expectedFlag)) {
+				return true;
+			}
+			break;
+		}
+	}
+	return false;
+}
+
+bool UDPServer::receivePacket(UDPPacket& packet) {
+	// 模拟丢包和延时处理参数
+	static std::default_random_engine generator_drop, generator_delay;
+	UINT every;
+	if (drop > 0) every = static_cast<UINT>(1 / drop);
+	else every = UINT32_MAX;
+	std::uniform_int_distribution<int> delayDistribution(0, 10); // 每10个包中随机选择一个进行延时
+	std::uniform_int_distribution<int> lossDistribution(0, every); // 每every个包中随机选择一个进行丢包
+	static bool drop = false;
+	static bool delay = false;
+
+	char* const buffer = new char[BUFFER_SIZE];
+	int addrLen = sizeof(clientAddr);
+	int recvLen = recvfrom(serverSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr*)&clientAddr, &addrLen);
+
+	if (recvLen > 0) {
+		packet.deserialize(std::string(buffer, recvLen));
+		Header pktHeader = packet.getHeader();
+
+		// 检查数据包的检验和
+		if (!packet.validChecksum()) {
+			Print("Checksum failed for packet with seq: " + std::to_string(pktHeader.seqNum), WARN);
+			return false;
+		}
+
+		// 对数据包模拟丢包和延时
+		if (packet.isFlagSet(Flag::DATA)) {
+			drop = (lossDistribution(generator_drop) == 0);
+			delay = (delayDistribution(generator_delay) == 0);
+			// 随机选择Data包进行丢包
+			if (drop) {
+				Print("Simulating packet loss for packet seq: " + std::to_string(pktHeader.seqNum), WARN);
+				return false; // 不处理该包，模拟丢包
+			}
+			// 随机选择Data包进行延时
+			if (delay) {
+				Print("Delaying ACK for packet seq: " + std::to_string(pktHeader.seqNum), WARN);
+				Sleep(Delay);
+			}
+		}
+		ackNum = pktHeader.seqNum + 1;          // 更新ACK
+		// 打印接收到的数据包信息
+		PrintPacketInfo(packet, RECV);
+		return true;
+	}
+	else if (recvLen == 0 || WSAGetLastError() != WSAEWOULDBLOCK) {
+		Print("recvfrom() failed with error code: " + std::to_string(WSAGetLastError()), ERR);
+	}
+	delete[] buffer;
+	return false;
+}

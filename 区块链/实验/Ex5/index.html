@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web3.js Demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="./web3.min.js"></script>
+    <script src="./abi-decoder.js"></script>
+  </head>
+  <body>
+  	<h1>Blockchain Splitwise</h1>
+    <div class="panel panel_right">
+		<h2>My Account</h2>
+		<select id="myaccount" class="account"></select>
+		<p>Total Owed: <span id="total_owed"></span></p>
+		<p>Last Activity: <span id="last_active"></span></p>
+	</div>
+	<div class="wallet_addresses_panel">
+		<h2>Wallet Addresses</h2>
+		<ol class="wallet_addresses"></ol>
+	</div>
+    <div class="main">
+      <h2>Add IOU</h2>
+
+      <label for="creditor">
+      	Address of person you owe:
+      </label>
+      	<input type="text" id="creditor">
+      
+      <label for="amount">
+      	Amount you owe them:
+      </label>
+		<input id="amount" type="text">
+      
+      <button id="addiou">Add IOU</button>
+      <h2>Users</h2>
+      <ul id="all_users"></ul>
+      <pre id="log"></pre>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="./utils.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

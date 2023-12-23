@@ -1,0 +1,10 @@
+/* function undefine */
+
+int func(int x, int y)
+{
+	return x + 2 * y; 
+}
+int main()
+{
+	return new_f(1);
+}

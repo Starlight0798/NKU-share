@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server-3-3", "Server-3-3\Server-3-3.vcxproj", "{006AA28D-2005-44FA-B5A5-C605AFE90D80}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D1D9CBD4-A263-4948-BC8C-5D962C7F45FF} = {D1D9CBD4-A263-4948-BC8C-5D962C7F45FF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server-3-2", "Server-3-2\Server-3-2.vcxproj", "{D1D9CBD4-A263-4948-BC8C-5D962C7F45FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15D44F86-CB05-4D7C-A186-20FD61D62E7A} = {15D44F86-CB05-4D7C-A186-20FD61D62E7A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server-3-1", "Server-3-1\Server-3-1.vcxproj", "{15D44F86-CB05-4D7C-A186-20FD61D62E7A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UDPBase", "UDPBase\UDPBase.vcxitems", "{AA1A1AF5-DDFC-4210-9389-17F77E4B86DA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client-3-1", "Client-3-1\Client-3-1.vcxproj", "{99EE95C6-CE9B-48B7-B225-A4521DD8BE45}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client-3-2", "Client-3-2\Client-3-2.vcxproj", "{37FBE2C8-79AF-40F9-BC20-20DB0F27ED21}"
+	ProjectSection(ProjectDependencies) = postProject
+		{99EE95C6-CE9B-48B7-B225-A4521DD8BE45} = {99EE95C6-CE9B-48B7-B225-A4521DD8BE45}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client-3-3", "Client-3-3\Client-3-3.vcxproj", "{76B93FF6-FBB5-49BE-B8C5-BDF4AE99405E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{37FBE2C8-79AF-40F9-BC20-20DB0F27ED21} = {37FBE2C8-79AF-40F9-BC20-20DB0F27ED21}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{006AA28D-2005-44FA-B5A5-C605AFE90D80}.Debug|x86.ActiveCfg = Debug|Win32
+		{006AA28D-2005-44FA-B5A5-C605AFE90D80}.Debug|x86.Build.0 = Debug|Win32
+		{006AA28D-2005-44FA-B5A5-C605AFE90D80}.Release|x86.ActiveCfg = Release|Win32
+		{006AA28D-2005-44FA-B5A5-C605AFE90D80}.Release|x86.Build.0 = Release|Win32
+		{D1D9CBD4-A263-4948-BC8C-5D962C7F45FF}.Debug|x86.ActiveCfg = Debug|Win32
+		{D1D9CBD4-A263-4948-BC8C-5D962C7F45FF}.Debug|x86.Build.0 = Debug|Win32
+		{D1D9CBD4-A263-4948-BC8C-5D962C7F45FF}.Release|x86.ActiveCfg = Release|Win32
+		{D1D9CBD4-A263-4948-BC8C-5D962C7F45FF}.Release|x86.Build.0 = Release|Win32
+		{15D44F86-CB05-4D7C-A186-20FD61D62E7A}.Debug|x86.ActiveCfg = Debug|Win32
+		{15D44F86-CB05-4D7C-A186-20FD61D62E7A}.Debug|x86.Build.0 = Debug|Win32
+		{15D44F86-CB05-4D7C-A186-20FD61D62E7A}.Release|x86.ActiveCfg = Release|Win32
+		{15D44F86-CB05-4D7C-A186-20FD61D62E7A}.Release|x86.Build.0 = Release|Win32
+		{99EE95C6-CE9B-48B7-B225-A4521DD8BE45}.Debug|x86.ActiveCfg = Debug|Win32
+		{99EE95C6-CE9B-48B7-B225-A4521DD8BE45}.Debug|x86.Build.0 = Debug|Win32
+		{99EE95C6-CE9B-48B7-B225-A4521DD8BE45}.Release|x86.ActiveCfg = Release|Win32
+		{99EE95C6-CE9B-48B7-B225-A4521DD8BE45}.Release|x86.Build.0 = Release|Win32
+		{37FBE2C8-79AF-40F9-BC20-20DB0F27ED21}.Debug|x86.ActiveCfg = Debug|Win32
+		{37FBE2C8-79AF-40F9-BC20-20DB0F27ED21}.Debug|x86.Build.0 = Debug|Win32
+		{37FBE2C8-79AF-40F9-BC20-20DB0F27ED21}.Release|x86.ActiveCfg = Release|Win32
+		{37FBE2C8-79AF-40F9-BC20-20DB0F27ED21}.Release|x86.Build.0 = Release|Win32
+		{76B93FF6-FBB5-49BE-B8C5-BDF4AE99405E}.Debug|x86.ActiveCfg = Debug|Win32
+		{76B93FF6-FBB5-49BE-B8C5-BDF4AE99405E}.Debug|x86.Build.0 = Debug|Win32
+		{76B93FF6-FBB5-49BE-B8C5-BDF4AE99405E}.Release|x86.ActiveCfg = Release|Win32
+		{76B93FF6-FBB5-49BE-B8C5-BDF4AE99405E}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {633B8727-627A-4F82-AEAD-28C4B8013766}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		UDPBase\UDPBase.vcxitems*{006aa28d-2005-44fa-b5a5-c605afe90d80}*SharedItemsImports = 4
+		UDPBase\UDPBase.vcxitems*{15d44f86-cb05-4d7c-a186-20fd61d62e7a}*SharedItemsImports = 4
+		UDPBase\UDPBase.vcxitems*{37fbe2c8-79af-40f9-bc20-20db0f27ed21}*SharedItemsImports = 4
+		UDPBase\UDPBase.vcxitems*{76b93ff6-fbb5-49be-b8c5-bdf4ae99405e}*SharedItemsImports = 4
+		UDPBase\UDPBase.vcxitems*{99ee95c6-ce9b-48b7-b225-a4521dd8be45}*SharedItemsImports = 4
+		UDPBase\UDPBase.vcxitems*{aa1a1af5-ddfc-4210-9389-17f77e4b86da}*SharedItemsImports = 9
+		UDPBase\UDPBase.vcxitems*{d1d9cbd4-a263-4948-bc8c-5d962c7f45ff}*SharedItemsImports = 4
+	EndGlobalSection
+EndGlobal

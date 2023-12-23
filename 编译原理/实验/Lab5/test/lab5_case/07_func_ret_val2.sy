@@ -1,0 +1,12 @@
+/* Missing return stmt */
+
+int func(int x)
+{
+	int twice = 2 * x;
+}
+
+int main()
+{
+	func(42);
+	return 0;
+}

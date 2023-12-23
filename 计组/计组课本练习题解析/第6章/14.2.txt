@@ -1,0 +1,46 @@
+We present the snippet of code which does dot product.
+{CUDA code}
+ __global__ void Vector_Multiplication (const int *sh_a, const int *sh_b, int *sh_c) { // sh = shared
+      //Get ID of thread
+      unsigned int tid = threadIdx.x;
+     
+      if (tid < 128) // 128 threads
+            sh_c[tid] = sh_a[tid] * sh_b[tid];
+}
+
+int Dot_Product_Main(const int *a, const int *b) {
+      // we assume that arrays have 128 elements to fully utilize parallelization
+      // new temporary array
+
+      int *c = (int*)malloc(128*sizeof(int));
+
+      // allocate on GPU
+      cudaMalloc((void **)&sh_a, 128*sizeof(int)); 
+      cudaMalloc((void **)&sh_b, 128*sizeof(int)); 
+      cudaMalloc((void **)&sh_c, 128*sizeof(int));
+
+      cudaMemcpy(sh_a, a, 128*sizeof(int), cudaMemcpyHostToDevice);
+      cudaMemcpy(sh_b, b, 128*sizeof(int), cudaMemcpyHostToDevice);
+
+      // Call to GPU
+      Vector_Multiplication <<<1, 128>>> (sh_a, sh_b, sh_c); 
+
+      // save result to c
+      cudaMemcpy(c, sh_c, 128*sizeof(int), cudaMemcpyDeviceToHost);
+
+      // free memory on GPU
+      cudaFree(sh_a);
+      cudaFree(sh_b);
+      cudaFree(sh_c);
+
+      // Sum of elements of c is dot product
+      int dot_product = 0;
+      for (int i = 0; i < 128; ++i)
+            dot_product += c[i];
+
+      // free space required for c
+      free(c);
+
+      // return dot product
+      return dot_product;
+}

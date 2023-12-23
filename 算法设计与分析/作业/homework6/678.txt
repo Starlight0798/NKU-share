@@ -1,0 +1,65 @@
+5 8
+1 2 2
+2 3 2
+2 4 1
+1 3 5
+3 4 3
+1 4 4
+1 5 7
+4 5 2
+
+Implement greedy algorithms of Huffman codes and give some examples to
+test it. Input: The first line is the number n for symbols. The second line is the frequency of the symbols. 
+Output: The average length of Huffman codes. 
+Example:
+Input:
+4
+1 2 3 4
+Output:
+1.90
+
+Implement divide-and-conquer algorithms of counting inversions and give
+some examples to test it. 
+Input: The first line is the number n for integers. The second line is a list of n integers.
+Output: the number of inversions.
+Example:
+Input:
+12
+1 5 4 8 10 2 6 9 12 11 3 7
+Output:
+22
+
+10
+2 5 6 3 4 5 9 7 1 2
+
+
+Implement divide-and-conquer algorithms of finding the closest pairs of
+points in 2D space and give some examples to test it. 
+Input: a list of n points in 2D space. 
+Output: the euclidean distance of the closest pairs of points, the coordinates of twopoints.
+Example:
+Input:
+8
+1 1
+2 2
+4 4
+8 8
+2 2.8
+5 6
+7 9
+11 11
+Output:
+0.64
+
+
+Implement divide-and-conquer algorithms of mergesort and give some
+examples to test it. Input: The first line is the number n for integers. The second line is a list of n integers.
+Output: a list of sorted n integers. 
+Example:
+Input:
+10
+2 5 6 3 4 5 9 7 1 2
+Output:
+1 2 2 3 4 5 5 6 7 9
+
+

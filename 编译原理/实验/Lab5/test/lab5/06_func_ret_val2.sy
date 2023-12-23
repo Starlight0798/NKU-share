@@ -1,0 +1,12 @@
+/* Missing return stmt */
+
+int func(int a, int b)
+{
+	int sum = a + b;
+}
+
+int main()
+{
+	func(1,2);
+	return 0;
+}

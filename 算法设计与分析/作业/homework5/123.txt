@@ -1,0 +1,80 @@
+Implement algorithms of optimal caching and give some examples to test it. 
+Input:The first line is size of cache k, initial blocks number now in cache and the number s for the sequence of requests. The second line is the initial block now in cache The third line is the block no for the sequence of request. Output: eviction schedule(when some blocks can be considered at the same time, the longest not used one should be evicted first)
+Example:
+Input:
+3 1 10
+1
+2 4 3 1 5 3 2 1 4 2
+Output:
+4 1 5 3
+
+Implement Dijkstra algorithms of single-source shortest path and give some
+examples to test it. Input: a directed graph with n nodes and e edges, source node�s, the length of each edge (�xi,xj,l�)
+Output: the shortest distance of other nodes and corresponding path. Example:
+Input:
+5 8 1
+1 2 2
+2 3 2
+2 4 1
+1 3 5
+3 4 3
+1 4 4
+1 5 7
+4 5 2
+Output:
+0 2 4 3 5
+
+Implement algorithms of minimum spanning tree and give some examples totest it. Input: a undirected graph with n nodes and e edges, the length of each edge(xi,xj,l)
+Output: the sum of all edges in minimum spanning tree. Example:
+Input:
+5 8
+1 2 2
+2 3 2
+2 4 1
+1 3 5
+3 4 3
+1 4 4
+1 5 7
+4 5 2
+Output:
+7
+
+5 4 10
+1 2 3 4
+5 1 4 2 6 2 1 5 4 1
+
+6 5 10
+1 2 3 4 5
+3 1 5 6 6 7 3 1 5 6
+
+5 5 5
+1 2 3 4 5
+6 7 8 9 10
+
+
+7 11
+1 2 15
+1 3 2
+1 4 12
+2 5 6
+3 5 8
+3 6 4
+4 7 3
+5 7 9
+6 4 5
+6 7 10
+7 2 4
+
+
+7 9
+1 6 10
+6 5 25
+5 4 22
+4 3 12
+3 2 16
+2 1 28
+5 7 24
+4 7 18
+2 7 14
+
+

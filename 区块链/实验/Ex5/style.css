@@ -1,0 +1,55 @@
+body {
+ 	font-family: 'Source Sans Pro', 'Arial';
+	background-color:#EEE;
+	padding: 30px;
+}
+.main {
+	width: 50%;
+}
+.panel {
+	position: absolute;
+	top: 20px;
+	width: 300px;
+	background-color: #CCC;
+	padding: 20px;
+}
+.panel_left {
+	left: 20px;
+}
+.panel_right {
+	right: 20px;
+}
+#all_users {
+	color: #666;
+}
+.wallet_addresses_panel {
+	position: absolute;
+	width: 300px;
+	height: 160px;
+	background-color: #CCC;
+	padding: 20px;
+	bottom: 10px;
+	right: 10px;
+	font-size: 10px;
+	opacity: 0.5;
+}
+#amount {
+	width: 140px;
+}
+
+label {
+	display:block;
+	margin-bottom:10px;
+}
+input {
+	width: 280px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+button {
+	display: block;
+	margin: 30px 0;
+	padding: 15px 30px;
+	border: 1px solid #666;
+	background: #CCC;
+}

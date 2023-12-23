@@ -1,0 +1,21 @@
+/* The operand's type cannnt be void */
+
+void func1(int a)
+{
+	a = a + 1;
+	return;
+}
+void func2(int b)
+{
+	if(b < 0)
+		b = 0;
+	else
+		b = 1;
+	return;
+}
+
+int main()
+{
+	int ret = func1(1) + func2(2);
+	return ret;
+}

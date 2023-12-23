@@ -1,0 +1,14 @@
+/* The operand's type can't be void */
+
+void func(int x)
+{
+	x = x + 1;
+	return;
+}
+
+
+int main()
+{
+	int ret = 2 + func(1);
+	return ret;
+}

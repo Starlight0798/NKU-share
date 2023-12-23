@@ -1,0 +1,29 @@
+int whileIf() {
+  // 考察赋值语句
+  int a;
+  a = 0;
+  int b;
+  b = 0;
+  // 考察while/if语句和关系运算
+  while (a < 100) { 
+    if (a == 5) {
+      b = 25;
+    }
+    else if (a == 10) {
+      b = 42;  
+    }
+    else {
+      b = a * 2;
+    }
+    a = a + 1;
+  }
+  // 考察return语句
+  return (b);
+}
+
+int main(){
+  int a = getint(); // 考察SysY运行时库
+  int b = 30;
+  int c= a - -5 + b + -5; // 考察表达式
+  return (whileIf()); // 考察函数调用
+}

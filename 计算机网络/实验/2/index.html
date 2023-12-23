@@ -1,0 +1,111 @@
+{% load static %}
+<link REL="SHORTCUT ICON" HREF="{% static "img/favicon.ico" %}"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 700px;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 120px;
+            height: auto;
+            border-radius: 50%;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            margin-bottom: 0.3em;
+            color: #555;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        .introduction {
+            text-align: justify;
+            margin-top: 20px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: white;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="centered">
+        <div class="header">
+            <img src="{% static 'img/logo.jpg' %}" alt="个人LOGO">
+            <h1>齐明杰</h1>
+        </div>
+
+        <div class="card">
+            <h2>基本信息</h2>
+            <p><strong>姓名：</strong>齐明杰</p>
+            <p><strong>学号：</strong>2113997</p>
+            <p><strong>专业：</strong>信息安全</p>
+        </div>
+
+        <div class="card">
+            <h2>自我介绍</h2>
+            <p class="introduction">我是信息安全专业的学生，对编程和最新技术充满热情。我正在寻找机会来进一步发展我的技能和知识。</p>
+            <audio controls>
+                <source src="{% static 'audio/introduction.mp3' %}" type="audio/mpeg">
+                您的浏览器不支持 audio 元素。
+            </audio>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2023 齐明杰的个人网站</p>
+    </footer>
+
+</body>
+</html>
