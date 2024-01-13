@@ -1,0 +1,21 @@
+{
+  "name": "cs251-cash",
+  "version": "0.1.0",
+  "description": "Simple Tornado clone for CS 251",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -s 1s -t 5s test/if_then_else.js test/selective_switch.js test/compute_spend_inputs.js test/spend.js"
+  },
+  "author": "aozdemir",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "docopt": "^0.6.2",
+    "circom": "alex-ozdemir/circom#cs251",
+    "snarkjs": "0.1.11",
+    "mocha": "^5.2.0",
+    "chai": "^4.1.0",
+    "big-integer": "^1.6.47"
+  }
+}
