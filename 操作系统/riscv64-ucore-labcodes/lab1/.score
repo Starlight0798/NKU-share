@@ -1,0 +1,28 @@
+Check Output:            (2.3s)
+  -check ring 0:                             WRONG
+   -e !! error: missing '0: @ring 0'
+   !! error: missing '0:  cs = 8'
+   !! error: missing '0:  ds = 10'
+   !! error: missing '0:  es = 10'
+   !! error: missing '0:  ss = 10'
+
+  -check switch to ring 3:                   WRONG
+   -e !! error: missing '+++ switch to  user  mode +++'
+   !! error: missing '1: @ring 3'
+   !! error: missing '1:  cs = 1b'
+   !! error: missing '1:  ds = 23'
+   !! error: missing '1:  es = 23'
+   !! error: missing '1:  ss = 23'
+
+  -check switch to ring 0:                   WRONG
+   -e !! error: missing '+++ switch to kernel mode +++'
+   !! error: missing '2: @ring 0'
+   !! error: missing '2:  cs = 8'
+   !! error: missing '2:  ds = 10'
+   !! error: missing '2:  es = 10'
+   !! error: missing '2:  ss = 10'
+
+  -check ticks:                              OK
+Total Score: 10/40
+Makefile:240: recipe for target 'grade' failed
+make: *** [grade] Error 1

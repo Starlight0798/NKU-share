@@ -1,0 +1,5 @@
+Check PMM:               (2.3s)
+  -check pmm:                                OK
+  -check page table:                         OK
+  -check ticks:                              OK
+Total Score: 50/50

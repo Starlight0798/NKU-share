@@ -1,0 +1,47 @@
+
+OpenSBI v0.4 (Jul  2 2019 11:53:53)
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name          : QEMU Virt Machine
+Platform HART Features : RV64ACDFIMSU
+Platform Max HARTs     : 8
+Current Hart           : 0
+Firmware Base          : 0x80000000
+Firmware Size          : 112 KB
+Runtime SBI Version    : 0.1
+
+PMP0: 0x0000000080000000-0x000000008001ffff (A)
+PMP1: 0x0000000000000000-0xffffffffffffffff (A,R,W,X)
+(THU.CST) os is loading ...
+
+Special kernel symbols:
+  entry  0xc0200036 (virtual)
+  etext  0xc02068a8 (virtual)
+  edata  0xc0233048 (virtual)
+  end    0xc023e758 (virtual)
+Kernel executable memory footprint: 250KB
+memory management: default_pmm_manager
+physcial memory map:
+  memory: 0x07e00000, [0x80200000, 0x87ffffff].
+vapaofset is 18446744070488326144
+check_alloc_page() succeeded!
+check_pgdir() succeeded!
+check_boot_pgdir() succeeded!
+use SLOB allocator
+kmalloc_init() succeeded!
+check_vma_struct() succeeded!
+Store/AMO page fault
+page fault at 0x00000100: K/W
+check_pgfault() succeeded!
+check_vmm() succeeded.
+sched class: RR_scheduler
+kernel panic at kern/process/proc.c:856:
+    create init_main failed.
+
