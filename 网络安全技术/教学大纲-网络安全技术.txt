@@ -1,0 +1,20 @@
+网络安全技术	代码:	CSSE0034
+学分:	2.5	课时:	64
+周课时:	0	周数:	16
+考核方式:	考查
+
+课程简介:	本课程从实用的角度出发，通过介绍工业界广泛使用的网络安全实例，概览了当前网络安全解决方案中使用的主要算法，重要协议和系统管理方法。主要内容包括：(1) (略讲)密码算法和协议，包括网络安全应用中最常用的密码算法和协议; (2)网络安全应用，介绍了网络安全解决方案中使用的各种安全协议，如Kerberos, PGP, S/MIME, IPSec, SSL/TLS，以及SET等; (3) (选讲)系统安全，介绍了一些系统级的安全问题，如网络入侵，恶意软件和防火墙等。 课程的教学对象是信息安全专业、计算机专业和物联网专业三年级本科生。通过学习本课程，培养学生综合应用以前所学的信息安全基础知识，理解和构建安全的网络系统的能力。
+
+英文简介:	It is the purpose of this course to provide a practical survey of network security applications and standards. By giving a great deal of examples and instances of network security solutions, we mainly focus on applications that are widely deployed on Internet and introduce prevalent industrial standards accordingly. This course includes three main parts: (1) Cryptography algorithms and protocols, including encryption, hash functions, digital signatures algorithms and key exchange protocol; (2) Network security applications, covering important network security tools and applications, such as Kerberos, X.509 v3 certificates, PGP, S/MIME, IP Security, SSL/TLS, SET; (3) (Optional) System security, focusing on system-level security issues, including threats and countermeasures for intruders and viruses, and the use of firewalls and trusted systems. This course is suitable for the sophomores who major in Information Security, Computer Science and The Internet of Things. When the students finished the course, they should have a basic idea with cryptography, system and network security, and should have the ability to build a secure network system.
+
+教学目标:	本课程的教学目的是进一步加强学生对网络安全技术的认识，并通过理论学习和上机实验使学生具备构建安全的网络系统的能力。 通过本课程的学习，学生应能掌握在网络安全应用中最常用的密码算法和协议；掌握各种网络安全应用以及网络安全解决方案中使用的各种安全协议，如Kerberos, PGP, S/MIME, IPSec,SSL/TLS，以及SET等；能够解决一些系统级的安全问题，如网络入侵，恶意软件和防火墙配置等。
+
+考核方式:	本课程的期末考核方式是提交一份综合性研究报告，报告需要在本课程涵盖的某一个方向上有比较深入的调研。研究报告的成绩和平时成绩（包括平时上机和书面作业成绩）比例为5:5。
+
+教学安排:	本课程开设在第六学期，授课/上机学时分别为32学时/28学时。课程内容： 第1章 引言 (2学时) 　1.1 安全趋势 　1.2 OSI安全体系结构 　1.3 安全攻击 　1.4 安全服务 　1.5 安全机制 　1.6 网络安全模型 　1.7 互联网标准与互联网协会 　1.8 本书概览 第1部分 密码编码学 　第2章 对称加密和消息机密性 (2学时) 　　2.1 对称加密原理 　　2.2 对称分组加密算法 　　2.3 流密码和RC4 　　2.4 分组密码的工作模式 　　2.5 加密设备的位置 　　2.6 密钥分发 　第3章　公钥密码和消息认证 (2学时) 　　3.1　消息认证方法 　　3.2　安全散列函数和HMAC 　　3.3　公钥加密原理 　　3.4　公钥加密算法 　　3.5　数字签名 　　3.6　密钥管理 　　 第2部分　网络安全应用 第4章 认证的应用 (6学时) 4.1　Kerberos 4.2　X.509认证服务 4.3 公钥基础设施 4.4 推荐读物及习题 　　 第5章 电子邮件安全 (3学时) 5.1　PGP 　　5.2　S/MIME 　　5.3　相关思考题，推荐内容 　　5.4　ZIP压缩，Base-64,PGP随机数算法 第6章 IP安全 (4学时) 6.1　IP安全概述 　　6.2　IP安全体系结构 　　6.3　认证报头 6.4 封装安全载荷 6.5 安全关联组合 6.6 密钥管理 第7章 Web安全(6学时) 7.1 Web安全需求 7.2 安全套接字层(SSL)和传输层安全(TLS) 7.3 安全电子交易(SET)概述 7.4 推荐内容 第3部分　系统安全 第8章 入侵者 (3学时) 9.1 入侵者 9.2 入侵检测 9.3 口令管理 9.4 推荐内容 第9章 恶意软件 (2学时) 10.1 病毒及相关威胁 10.2 病毒对策 10.3 分布式拒绝服务攻击 第10章 防火墙 (2学时) 11.1 防火墙设计原则 11.2 可信系统 实验内容： 实验一、Windows 2003 Server环境下独立根CA安装及使用（2学时） 实验内容：通过在在Windows 2003 Server环境下独立根CA的安装及使用，了解和掌握认证服务的基本原理。 实验二、Windows 2003环境下PPTP VPN的配置（2学时） 实验内容：在Windows 2003环境下配置PPTP VPN，了解和掌握VPN基本原理。 实验三、基于Web的SSL设置（2学时） 实验内容：通过对Web的SSL进行配置，了解和掌握利用SSL加固Web服务安全的原理和方法。 实验四、sniffer软件捕获网络数据包（2学时） 实验内容：安装sniffer软件，将主机网卡设置为混杂模式，监听在同一个局域网内容的网络数据包，了解和掌握网络监听原理。 实验五、网络漏洞扫描 （4学时） 实验内容：安装网络漏洞扫描器Nessus，通过扫描局域网内部的主机，发现主机漏洞。 实验六、构造Linux下的入侵检测系统（4学时） 实验内容：在虚拟机中安装Linux操作系统，利用开源软件snort构造入侵检测系统，并对snort进行碎片攻击测试。 实验七、账号口令破解（4学时） 实验内容：在虚拟机中安装Linux操作系统，安装暴力破解软件john the ripper，进行账号口令的暴力破解。 实验八、DDoS攻击（4学时） 实验内容：在局域网内部配置一台HTTP服务器，通过DDoS攻击工具发起拒绝服务攻击，使用浏览器访问该HTTP服务器，并分析观察结果。 实验九、用iptables构建Linux防火墙（4学时） 实验内容：在虚拟机中安装Linux操作系统，通过iptables工具配置Linux防火墙，深入理解网络防火墙的原理。
+
+所用教材:	斯托林斯 网络安全基础：应用与标准(第5版) 清华大学出版社 2014年5月
+
+参考文献:	王杰 计算机网络安全的理论与实践 高等教育出版社 2011年 刘建伟 网络安全实验教程(第2版) 清华大学出版社 2012年5月 斯托林斯 密码编码学与网络安全—原理与实践(第6版) 电子工业出版社 2015年3月 Bruce Schneier 应用密码学：协议、算法与C源程序（原书第2版） 机械工业出版社 2013年11月
+
+要求建议:	该课程是信息安全专业、计算机专业和物联网专业本科阶段的一门重要课程，在教学体系中起到培养综合运用所学知识解决实际应用问题的动手能力的作用，因此学生在学习该课程时应该注重理论与实践相结合、特别注意对前后知识的融会贯通。相关要求及建议如下： 1. 注意理论联系实践 在完成实验内容的同时，学生应该主动回顾所学的基础知识，将实验内容作为基础知识的应用，加深理论在实际问题中的应用实践，提升对信息安全相关知识的认知程度。 2. 加强动手实践 在完成实验内容的同时，学生还应该主动加强和提高自己的动手实践能力。希望学生能够参与到一些小规模项目的实现中，比如应用工业界常用的标准库函数，进行流加密算法，分组加密算法，Hash算法，公钥加密算法的实现与比较；实现和熟悉常用的加密模式；类似Kerberos的简单安全认证机制的实现（Windows平台或者Linux平台，socket编程）；电子投票安全协议的实现等等。通过实习环节，使得学生能够从安全策略到底层的实现细节都能够有深入的理解，进一步提高了动手实践能力。
