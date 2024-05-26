@@ -1,0 +1,21 @@
+名称:	信息隐藏技术	代码:	CSSE0035
+学分:	2.5	课时:	60
+周课时:	0	周数:	16
+
+考核方式:	闭卷考试
+
+课程简介:	本课程是信息安全专业的专业必修课。开设本课程的目的是使学生了解并掌握信息隐藏所涉及的基本理论和方法，具备信息隐藏和数字水印的基本能力。信息隐藏技术是信息科学、密码学、数字信号处理、计算机科学等多学科交叉融合的产物。本课程主要介绍信息隐藏的基础知识，隐写术的基本原理及方法，数字水印技术的模型，数字水印的评价理论，数字水印的攻击方法等。
+
+英文简介:	This course is information security professionals are electives. The purpose of this course is opened to enable students to understand and master the information hiding involved in the basic theory and method, information hiding and digital watermarking with basic skills. Information Hiding information science, cryptography, digital signal processing, computer science and other interdisciplinary integration of the product. This course introduces the basics of information hiding, steganography the basic principles and methods of digital watermarking technology model, digital watermarking evaluation theory and benchmarks, watermarking attack strategy works.
+
+教学目标:	本课程的教学目的是让学生认识和掌握信息隐藏的基本概念，掌握数字水印技术及隐秘技术的特点和基本方法，掌握信息隐藏技术的评价理论和测试基准，了解水印及隐秘技术的常见攻击方法和策略。在此基础上，通过本课程的教学，引导学生进入信息安全前沿研究领域，增强对信息安全技术的全面了解，让学生了解作为信息安全领域的最新热点——信息隐藏技术的最新研究成果，培养学生综合运用所掌握的专业知识的能力，根据所面临的问题，主动获取相关知识，并解决问题的能力。
+
+考核方式:	期末闭卷考试，占70%； 平时成绩占30%。
+
+所用教材:	钮心忻，杨义先 《信息隐藏与数字水印》北京邮电大学出版社，2004
+
+教学安排:	讲授：（共32学时） 第1章 概论（2学时） 1.1 伪装式信息安全 1.2 信息隐藏历史的回顾 1.3 信息隐藏的主要分支 第2章 基础知识（4学时） 2.1 人类听觉特点 2.2 语音信号处理基础 2.3 人类视觉特点与图像质量评价 2.4 图像信号处理基础 第3章 信息隐藏基本原理（4学时） 3.1 信息隐藏的概念 3.2 信息隐藏的分类 3.3 信息隐藏的安全性 3.4 信息隐藏的健壮性 3.5 信息隐藏的基本模型 3.6 信息隐藏的应用 第4章 信息隐藏技术（8学时） 4.1 时域替换技术 4.2 变换域技术 4.3 其他隐藏技术 4.4 几种具体算法介绍 第5章 信息隐藏分析（4学时） 5.1 信息隐藏分析的方法 5.2 信息隐藏分析的分类 5.3 信息隐藏分析示例 第6章 数字水印基本原理（4学时） 6.1 数字水印提出的背景 6.2 数字水印的定义 6.3 数字水印的分类 6.4 数字水印的性能评价 6.5 数字水印的应用现状和研究方向 第7章 数字水印技术（4学时） 7.1 数字水印的形式和产生 7.2 数字水印框架 7.3 图像数字水印技术 7.4 视频数字水印技术 7.5 音频数字水印技术 7.6 软件数字水印技术 7.7 数字指纹技术 7.8 数字水印协仪与安全体系 7.9 数字水印产品现状 第8章 数字水印的攻击（2学时） 8.1 数字水印攻击的分类 8.2 水印攻击软件 实验：（共计28学时） 1.可视密码学（2学时） 2.叠像术（2学时） 3.语音信号处理（2学时） 4.图像信号处理（2学时） 5.空域信息隐藏技术实验（2学时） 6.二值图像的信息隐藏实验（2学时） 7.变换域信息隐藏技术实验（2学时） 8.多媒体文件格式剖析及隐藏（2学时） 9.研读文献并复现（2学时） 10.文献复现与改进（2学时） 11.空域图像水印技术（4学时） 12.DCT域图像水印技术（4学时）
+
+参考文献:	1、王丽娜,张换国《信息隐藏技术与应用》武汉大学出版社,2003; 2、吴秋新等译， Information Hiding Techniques for Steganography and Digital Wattermarking Stefan Katzenbeisser Fabien A.P. Petitcolas 2001年9月； 3、柏森，朱桂斌，曹玉强 著 《信息隐藏算法及应用》，国防工业出版社，2015。
+
+要求建议:	建议学生在学习信息隐藏基础知识的同时，多阅读相关文献，了解该领域的前沿动态。
